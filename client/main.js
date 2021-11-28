@@ -1,36 +1,56 @@
-const socket = io();
 const $ = document.querySelector.bind(document);
 
 const username = prompt("Name:");
+const socket = io("", { query: "name=" + username });
 
 const text = $("#text");
 const btn_send = $("#send");
-const list = $("#chatbox ul");
-const chatList = [];
+const list = $("#chat-box");
+const members = $("#members div");
 
-const render = () => {
-  let html = "";
-  chatList.forEach((i) => {
-    html += `<li>${i.username}: ${i.text}</li>`;
-  });
-  list.innerHTML = html;
+const renderMessage = (type, message) => {
+  if (type == "my") {
+    let el = document.createElement("div");
+    el.setAttribute("class", "message my-message");
+    el.innerHTML = `
+				<div>
+					<div class="name">You</div>
+					<div class="text">${message.text}</div>
+				</div>
+			`;
+    list.appendChild(el);
+  } else if (type == "other") {
+    let el = document.createElement("div");
+    el.setAttribute("class", "message other-message");
+    el.innerHTML = `
+				<div>
+					<div class="name">${message.username}</div>
+					<div class="text">${message.text}</div>
+				</div>
+			`;
+    list.appendChild(el);
+  }
 };
 
-render();
-const addText = (text) => {
-  chatList.push(text);
-  render();
+const renderMembers = (membersList) => {
+  let html = "";
+  membersList.forEach((member) => {
+    html += `<div>${member}</div>`;
+  });
+  members.innerHTML = html;
 };
 
 btn_send.addEventListener("click", (e) => {
   e.preventDefault();
-
-  addText({ username: username, text: text.value });
-  socket.emit("msg", { username: username, text: text.value });
-
+  renderMessage("my", { username: username, text: text.value });
+  socket.emit("chat", { username: username, text: text.value });
   text.value = "";
 });
 
-socket.on("msg-end", (d) => {
-  addText(d);
+socket.on("chat", (message) => {
+  renderMessage("other", message);
+});
+
+socket.on("members", (members) => {
+  renderMembers(members);
 });

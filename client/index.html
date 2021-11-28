@@ -5,19 +5,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <title>Chatroom</title>
 </head>
 
 <body>
-    <div class="chat" id="chatbox">
-        <ul></ul>
+    <div class="container">
+        <div class="members" id="members">
+            <h4>Members</h4>
+            <div></div>
+        </div>
+
+        <div class="chat-screen">
+            <div class="logo">Chatroom <i class="fas fa-sms"></i></div>
+            <div class="chat" id="chat-box">
+            </div>
+            <div class="chat-input">
+                <form class="input-text">
+                    <input type="text" id="text" />
+                    <button class="btn" id="send" type="submit">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
     </div>
-    <div class="chat-input">
-        <form>
-            <input type="text" id="text" />
-            <button id="send" type="submit">Send</button>
-        </form>
-    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"
         integrity="sha512-nYuHvSAhY5lFZ4ixSViOwsEKFvlxHMU2NHts1ILuJgOS6ptUmAGt/0i5czIgMOahKZ6JN84YFDA+mCdky7dD8A=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
