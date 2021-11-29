@@ -8,30 +8,43 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
         integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <link rel="icon" href="./assets/logo.png">
     <title>Chatroom</title>
 </head>
 
 <body>
     <div class="container">
-        <div class="members" id="members">
-            <h4>Members</h4>
-            <div></div>
+        <!-- Title + Logo -->
+        <div class="chat-header">
+            <image class="img-logo" src="./assets/logo.png"></image>
+            <span class="title">Chatroom</span>
         </div>
 
-        <div class="chat-screen">
-            <div class="logo">Chatroom <i class="fas fa-sms"></i></div>
-            <div class="chat" id="chat-box">
+        <div class="chat-main">
+            <!-- Members -->
+            <div class="members" id="members">
+                <div class="title-members">MEMBERS</div>
+                <ul></ul>
             </div>
-            <div class="chat-input">
-                <form class="input-text">
-                    <input type="text" id="text" />
-                    <button class="btn" id="send" type="submit">
-                        <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                    </button>
-                </form>
+            <!-- Chat screen -->
+            <div class="chat-screen">
+                <div class="chat-box">
+                    <div class="chat-message" id="chat-message"></div>
+                </div>
+                <div class="chat-input">
+                    <form class="input-text">
+                        <input type="file" id="imgUpload" hidden accept="image/*" />
+                        <input type="text" id="text" />
+                        <div class="btn" id="sendImg">
+                            <i class="far fa-image"></i>
+                        </div>
+                        <button class="btn" id="send">
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
-
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"
