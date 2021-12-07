@@ -183,6 +183,7 @@ li .name {
     max-width: 100px;
     text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
 }
 .chat-box .message .text {
     word-wrap: break-word;
