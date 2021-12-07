@@ -1,12 +1,16 @@
 const express = require("express");
 const { createServer } = require("http");
+const { env } = require("process");
 const { Server, Socket } = require("socket.io");
-
+require("dotenv").config();
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   /* options */
 });
+
+const port = process.env.PORT || 3000;
+
 let clientList = [];
 app.use("/", express.static("client"));
 
@@ -34,4 +38,4 @@ io.on("connection", (socket) => {
   });
 });
 
-httpServer.listen(3000);
+httpServer.listen(port);

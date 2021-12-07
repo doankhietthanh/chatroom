@@ -4,9 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon ./server/index"
+    "dev": "nodemon ./server/index",
+    "start": "node ./server/index"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "socket.io": "^4.4.0"
   }
