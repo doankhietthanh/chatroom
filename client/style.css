@@ -179,7 +179,11 @@ li:hover {
     color: #555;
     margin-bottom: 5px;
 }
-
+li .name {
+    max-width: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 .chat-box .message .text {
     word-wrap: break-word;
 }
